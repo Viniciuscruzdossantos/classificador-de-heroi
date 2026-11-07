@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descubra o nível do seu herói! Classificador de nível feito com HTML, CSS e JavaScript.">
+  <title>Guilda dos Heróis | Classificador de Nível</title>
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/style.css">
+</head>
+
+<body>
+  <!-- Cenário: céu, colinas e bolhas (só decoração) -->
+  <div class="fundo" aria-hidden="true">
+    <span class="bolha" style="--t:90px;  --x:8%;  --d:26s; --a:-4s"></span>
+    <span class="bolha" style="--t:42px;  --x:22%; --d:20s; --a:-12s"></span>
+    <span class="bolha" style="--t:140px; --x:38%; --d:34s; --a:-20s"></span>
+    <span class="bolha" style="--t:60px;  --x:55%; --d:24s; --a:-8s"></span>
+    <span class="bolha" style="--t:110px; --x:72%; --d:30s; --a:-16s"></span>
+    <span class="bolha" style="--t:36px;  --x:86%; --d:18s; --a:-2s"></span>
+    <span class="bolha" style="--t:76px;  --x:94%; --d:28s; --a:-22s"></span>
+    <div class="colina colina--fundo"></div>
+    <div class="colina"></div>
+  </div>
+
+  <header class="topo">
+    <p class="topo__selo">Guilda dos Heróis</p>
+    <h1>Classificador de Nível</h1>
+    <p class="topo__sub">Conte o nome e a experiência do seu herói e descubra a que nível ele pertence.</p>
+  </header>
+
+  <main class="wrap">
+    <div class="coluna">
+      <!-- Formulário -->
+      <section class="card">
+        <h2>Registrar herói</h2>
+        <form id="form" novalidate>
+          <label for="nome">Nome do herói</label>
+          <input id="nome" type="text" maxlength="24" placeholder="Ex.: Aragorn" autocomplete="off">
+
+          <label for="xp">Experiência (XP)</label>
+          <input id="xp" type="number" min="0" max="999999" step="1" placeholder="Ex.: 7500" inputmode="numeric">
+
+          <p class="erro" id="erro" role="alert"></p>
+
+          <div class="botoes">
+            <button class="btn btn--azul" type="submit">Classificar</button>
+            <button class="btn btn--verde" id="aleatorio" type="button">Herói aleatório</button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Resultado -->
+      <section class="card resultado" id="resultado" aria-live="polite">
+        <p class="vazio" id="vazio">Seu herói aparece aqui depois de classificado.</p>
+
+        <div class="resultado__conteudo" id="conteudo" hidden>
+          <div class="orbe orbe--grande" id="emblema" aria-hidden="true"></div>
+          <p class="rank" id="rank"></p>
+          <p class="mensagem" id="mensagem"></p>
+
+          <p class="xp"><span id="xp-valor">0</span> XP</p>
+          <div class="barra" aria-hidden="true"><div class="barra__fill" id="barra"></div></div>
+          <p class="progresso" id="progresso"></p>
+        </div>
+      </section>
+    </div>
+
+    <div class="coluna">
+      <!-- Escada de níveis -->
+      <section class="card">
+        <h2>Escada de níveis</h2>
+        <ol class="escada" id="escada"></ol>
+      </section>
+
+      <!-- Ranking -->
+      <section class="card">
+        <div class="card__topo">
+          <h2>Ranking da Guilda</h2>
+          <button class="link" id="limpar" type="button">Restaurar</button>
+        </div>
+        <ol class="ranking" id="ranking"></ol>
+      </section>
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <p>Feito por <strong>Vinícius Cruz dos Santos</strong></p>
+  </footer>
+
+  <script src="./src/scripts/classificador.js"></script>
+  <script src="./src/scripts/app.js"></script>
+</body>
+
+</html>
